@@ -14,6 +14,14 @@ public class Client {
     private String clientName;
     private String clientAddress;
 
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
     public String getClientName() {
         return clientName;
     }

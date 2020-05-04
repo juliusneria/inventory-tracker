@@ -3,6 +3,7 @@ package com.system.inventorytracker.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.Date;
 
 @Entity
@@ -17,6 +18,8 @@ public class Receipt {
     private boolean isTransmittal;
     @OneToMany
     private ProductQuantity items;
+    @OneToOne
+    private Client client;
 
     public String getTransactionCode() {
         return transactionCode;
@@ -72,5 +75,13 @@ public class Receipt {
 
     public void setItems(ProductQuantity items) {
         this.items = items;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }
