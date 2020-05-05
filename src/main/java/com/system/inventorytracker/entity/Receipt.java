@@ -5,6 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Receipt {
@@ -17,7 +18,7 @@ public class Receipt {
     private Date deliveryDate;
     private boolean isTransmittal;
     @OneToMany
-    private ProductQuantity items;
+    private List<ProductQuantity> items;
     @OneToOne
     private Client client;
 
@@ -69,11 +70,11 @@ public class Receipt {
         isTransmittal = transmittal;
     }
 
-    public ProductQuantity getItems() {
+    public List<ProductQuantity> getItems() {
         return items;
     }
 
-    public void setItems(ProductQuantity items) {
+    public void setItems(List<ProductQuantity> items) {
         this.items = items;
     }
 

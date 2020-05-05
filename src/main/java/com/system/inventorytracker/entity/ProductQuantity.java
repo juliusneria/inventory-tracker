@@ -5,10 +5,6 @@ import javax.persistence.*;
 @Entity
 public class ProductQuantity {
 
-    /*received
-issued
-balance
-product*/
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long Id;
