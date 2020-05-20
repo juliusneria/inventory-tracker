@@ -1,4 +1,6 @@
-package com.system.inventorytracker.entity;
+package com.system.inventorytracker.app.quantity;
+
+import com.system.inventorytracker.app.product.Product;
 
 import javax.persistence.*;
 
@@ -13,6 +15,12 @@ public class ProductQuantity {
     private Integer balance;
     @OneToOne
     private Product product;
+    private boolean isDelete;
+
+    @PrePersist
+    protected void prePersist(){
+        isDelete = false;
+    }
 
     public Long getId() {
         return Id;
@@ -52,5 +60,13 @@ public class ProductQuantity {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 }

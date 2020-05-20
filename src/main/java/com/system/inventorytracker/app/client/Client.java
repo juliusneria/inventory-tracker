@@ -1,9 +1,7 @@
-package com.system.inventorytracker.entity;
+package com.system.inventorytracker.app.client;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Client {
@@ -13,6 +11,12 @@ public class Client {
     private Long Id;
     private String clientName;
     private String clientAddress;
+    private boolean isDelete;
+
+    @PrePersist
+    protected void prePersist(){
+        isDelete = false;
+    }
 
     public Long getId() {
         return Id;
@@ -36,5 +40,13 @@ public class Client {
 
     public void setClientAddress(String clientAddress) {
         this.clientAddress = clientAddress;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 }

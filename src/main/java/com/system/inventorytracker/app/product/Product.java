@@ -1,9 +1,6 @@
-package com.system.inventorytracker.entity;
+package com.system.inventorytracker.app.product;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Product {
@@ -17,6 +14,12 @@ public class Product {
     private Double unitCost;
     private String productName;
     private String type;
+    private boolean isDelete;
+
+    @PrePersist
+    protected void prePersist(){
+        isDelete = false;
+    }
 
     public Long getId() {
         return Id;
@@ -72,5 +75,13 @@ public class Product {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 }

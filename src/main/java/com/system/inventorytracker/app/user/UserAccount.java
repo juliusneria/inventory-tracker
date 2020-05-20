@@ -1,7 +1,8 @@
-package com.system.inventorytracker.entity;
+package com.system.inventorytracker.app.user;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 
 @Entity
 public class UserAccount {
@@ -11,6 +12,12 @@ public class UserAccount {
     private String password;
     private String name;
     private String role;
+    private boolean isDelete;
+
+    @PrePersist
+    protected void prePersist(){
+        isDelete = false;
+    }
 
     public String getUsername() {
         return username;
@@ -42,5 +49,13 @@ public class UserAccount {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 }

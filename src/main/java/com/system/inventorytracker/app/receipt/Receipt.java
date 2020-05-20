@@ -1,9 +1,9 @@
-package com.system.inventorytracker.entity;
+package com.system.inventorytracker.app.receipt;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import com.system.inventorytracker.app.client.Client;
+import com.system.inventorytracker.app.quantity.ProductQuantity;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +21,12 @@ public class Receipt {
     private List<ProductQuantity> items;
     @OneToOne
     private Client client;
+    private boolean isDelete;
+
+    @PrePersist
+    protected void prePersist(){
+        isDelete = false;
+    }
 
     public String getTransactionCode() {
         return transactionCode;
@@ -84,5 +90,13 @@ public class Receipt {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 }
